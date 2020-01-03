@@ -12,7 +12,6 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Endpoint
@@ -22,14 +21,14 @@ public class CourseDetailsEndpoint {
     //output - response - GetCourseDetailsResponse
 
     @Autowired
-    CourseDetailsService service;
+    CourseDetailsService courseService;
 
     @PayloadRoot(namespace = "http://in28minutes.com/courses", localPart = "GetCourseDetailsRequest")
     @ResponsePayload
     public GetCourseDetailsResponse processCourseDetailRequest(@RequestPayload GetCourseDetailsRequest request){
         GetCourseDetailsResponse response = new GetCourseDetailsResponse();
 
-        Course course = service.findById(request.getId());
+        Course course = courseService.findById(request.getId());
         response.setCourseDetails(mapCourse(course));
 
         return response;
@@ -38,7 +37,7 @@ public class CourseDetailsEndpoint {
     @PayloadRoot(namespace = "http://in28minutes.com/courses", localPart = "GetAllCourseDetailsRequest")
     @ResponsePayload
     public GetAllCourseDetailsResponse processAllCourseDetailRequest(){
-        List<Course> courses = service.findAll();
+        List<Course> courses = courseService.findAll();
 
         return mapAllCoursesDetails(courses);
     }
