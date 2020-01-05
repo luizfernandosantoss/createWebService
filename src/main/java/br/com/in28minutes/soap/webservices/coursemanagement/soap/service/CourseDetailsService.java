@@ -1,6 +1,7 @@
 package br.com.in28minutes.soap.webservices.coursemanagement.soap.service;
 
 import br.com.in28minutes.soap.webservices.coursemanagement.soap.bean.Course;
+import com.in28minutes.courses.Status;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -40,16 +41,16 @@ public class CourseDetailsService {
     }
 
     //deleteCourse findById(int id)
-    public int deleteById(int id){
+    public Status deleteById(int id){
         Iterator<Course> interator = courses.iterator();
         while (interator.hasNext()){
             Course course = interator.next();
             if(course.getId() == id){
                 interator.remove();
-                return 1;
+                return Status.SUCCESS;
             }
         }
-        return 0;
+        return Status.FAILURE;
     }
 
     //updating course & new course

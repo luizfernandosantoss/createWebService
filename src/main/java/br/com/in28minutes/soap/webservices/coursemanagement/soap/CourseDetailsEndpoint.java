@@ -2,10 +2,7 @@ package br.com.in28minutes.soap.webservices.coursemanagement.soap;
 
 import br.com.in28minutes.soap.webservices.coursemanagement.soap.bean.Course;
 import br.com.in28minutes.soap.webservices.coursemanagement.soap.service.CourseDetailsService;
-import com.in28minutes.courses.CourseDetails;
-import com.in28minutes.courses.GetAllCourseDetailsResponse;
-import com.in28minutes.courses.GetCourseDetailsRequest;
-import com.in28minutes.courses.GetCourseDetailsResponse;
+import com.in28minutes.courses.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -48,6 +45,16 @@ public class CourseDetailsEndpoint {
             CourseDetails courseDetails = mapCourse(course);
             response.getCourseDetails().add(courseDetails);
         }
+        return response;
+    }
+
+    @PayloadRoot(namespace = "http://in28minutes.com/courses", localPart = "DeleteCourseDetailsRequest")
+    @ResponsePayload
+    public DeleteCourseDetailsResponse deleteCourseDetailRequest(@RequestPayload DeleteCourseDetailsRequest request){
+        DeleteCourseDetailsResponse response = new DeleteCourseDetailsResponse();
+
+        Status status = courseService.deleteById(request.getId());
+        response.setStatus(status);
         return response;
     }
 

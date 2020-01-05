@@ -42,7 +42,7 @@ public class WebServiceConfig {
         //Namespace - http://in28minutes.com/courses
         definition.setTargetNamespace("http://in28minutes.com/courses");
         // ws /
-        definition.setLocationUri("/ws");
+        definition.setLocationUri("http://localhost:8080/ws");
         //schema
         definition.setSchema(coursesSchema);
 

@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="CourseDetails" type="{http://in28minutes.com/courses}CourseDetails"/>
+ *         &lt;element name="Status" type="{http://in28minutes.com/courses}Status"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "courseDetails"
+    "status"
 })
-@XmlRootElement(name = "GetCourseDetailsResponse")
-public class GetCourseDetailsResponse {
+@XmlRootElement(name = "DeleteCourseDetailsResponse")
+public class DeleteCourseDetailsResponse {
 
-    @XmlElement(name = "CourseDetails", required = true)
-    protected CourseDetails courseDetails;
+    @XmlElement(name = "Status", required = true)
+    protected Status status;
 
     /**
-     * Obtém o valor da propriedade courseDetails.
+     * Obtém o valor da propriedade status.
      * 
      * @return
      *     possible object is
-     *     {@link CourseDetails }
+     *     {@link Status }
      *     
      */
-    public CourseDetails getCourseDetails() {
-        return courseDetails;
+    public Status getStatus() {
+        return status;
     }
 
     /**
-     * Define o valor da propriedade courseDetails.
+     * Define o valor da propriedade status.
      * 
      * @param value
      *     allowed object is
-     *     {@link CourseDetails }
+     *     {@link Status }
      *     
      */
-    public void setCourseDetails(CourseDetails value) {
-        this.courseDetails = value;
+    public void setStatus(Status value) {
+        this.status = value;
     }
 
 }
