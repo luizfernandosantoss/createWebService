@@ -26,6 +26,8 @@ public class CourseDetailsEndpoint {
         GetCourseDetailsResponse response = new GetCourseDetailsResponse();
 
         Course course = courseService.findById(request.getId());
+        if(course == null)
+            throw  new CourseNotFoundExeption("Invalid Course Id "+request.getId());
         response.setCourseDetails(mapCourse(course));
 
         return response;
